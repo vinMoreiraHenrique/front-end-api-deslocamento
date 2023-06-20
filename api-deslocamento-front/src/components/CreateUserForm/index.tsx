@@ -5,15 +5,23 @@ import { Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { inputTheme } from "./theme";
+import { IRegisterCliente } from "@/context/RegisterUser/Register.interfaces";
+
+
 
 const CreateUserForm = () => {
-  const { register, handleSubmit, onSubmit } = useContext( RegisterContext );
+  const { register, handleSubmit, createUser } = useContext( RegisterContext );
+
+  const onSubmit: SubmitHandler<IRegisterCliente> = (data) => {
+    createUser(data)
+    console.log(data.logradouro)
+  };
   
   return (
     <Container>
-      <form action="#" onSubmit={handleSubmit(onSubmit)}>
+      <form action="#" onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}>
         <ThemeProvider theme={inputTheme}>
           <TextField
             id="outlined-basic"

@@ -1,5 +1,6 @@
 import UserForm from "@/components/CreateUserForm";
 import Form from "@/components/CreateUserForm";
+import ListOfUsers from "@/components/ListUsers";
 import RegisterProvider from "@/context/RegisterUser/RegisterProvider";
 import Image from "next/image";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <RegisterProvider>
           <UserForm />
+          <ListOfUsers />
         </RegisterProvider>
       </div>
     </main>
