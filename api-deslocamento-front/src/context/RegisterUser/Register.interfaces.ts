@@ -22,8 +22,9 @@ export interface IRegisterProvider {
     register: UseFormRegister<IRegisterCliente>;
     handleSubmit: UseFormHandleSubmit<FieldValues>;
     errors: FieldErrors<FieldValues>; 
-    onSubmit: (data: FieldValues) => void;
     createUser: (data: DeepRequired<IRegisterCliente>) => void;
+    listUsers: () => void;
+    usersList: IRegisterCliente[];
 }
 export interface IFormProps {
 children: ReactNode
