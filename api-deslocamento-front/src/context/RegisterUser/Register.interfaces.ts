@@ -8,6 +8,7 @@ import {
   } from "react-hook-form"
 
 export interface IRegisterCliente {
+  id?: string;
   numeroDocumento: string;
   tipoDocumento: string;
   nome: string;
