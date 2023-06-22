@@ -1,27 +1,27 @@
 "use client";
 
-import { RegisterContext } from "@/context/RegisterUser/RegisterProvider";
+import { CreateUserContext } from "@/context/Users/CreateUser/CreateUserProvider";
 import { Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { inputTheme } from "./theme";
-import { IRegisterCliente } from "@/context/RegisterUser/Register.interfaces";
-
-
+import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
 
 const CreateUserForm = () => {
-  const { register, handleSubmit, createUser } = useContext( RegisterContext );
+  const { register, handleSubmit, createUser } = useContext(CreateUserContext);
 
-  const onSubmit: SubmitHandler<IRegisterCliente> = (data) => {
-    createUser(data)
-    console.log(data.logradouro)
+  const onSubmit: SubmitHandler<ICreateUser> = (data: any) => {
+    createUser(data);
   };
-  
+
   return (
     <Container>
-      <form action="#" onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}>
+      <form
+        action="#"
+        onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
+      >
         <ThemeProvider theme={inputTheme}>
           <TextField
             id="outlined-basic"

@@ -1,5 +1,4 @@
-"use client"
-import { RegisterContext } from "@/context/RegisterUser/RegisterProvider";
+"use client";
 import {
   Table,
   TableBody,
@@ -13,16 +12,18 @@ import {
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { styledTable } from "./theme";
-import { IRegisterCliente } from "@/context/RegisterUser/Register.interfaces";
+import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
+import { ListUsersContext } from "@/context/Users/ListUsers/ListUsersProvider";
 
 const ListOfUsers = () => {
-  const { listUsers, usersList } = useContext(RegisterContext);
+  const { listUsers, usersList, listUserById } = useContext(ListUsersContext);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [tableHeight, setTableHeight] = useState("auto");
 
   useEffect(() => {
     listUsers();
+    listUserById(92);
   });
 
   useEffect(() => {
@@ -36,13 +37,13 @@ const ListOfUsers = () => {
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
-    newPage: number,
+    newPage: number
   ) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -70,12 +71,16 @@ const ListOfUsers = () => {
             </TableHead>
             <TableBody>
               {usersList
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((user: IRegisterCliente, index: number) => {
+                ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                ?.map((user: ICreateUser, index: number) => {
                   return (
                     <TableRow
                       sx={{ backgroundColor: "white", color: "blue" }}
-                      className={usersList.length !== 0? "animate-fade-in-to-right": ""}
+                      className={
+                        usersList?.length !== 0
+                          ? "animate-fade-in-to-right"
+                          : ""
+                      }
                       key={user.id}
                     >
                       <TableCell>{user.id}</TableCell>
@@ -104,7 +109,8 @@ const ListOfUsers = () => {
           </Table>
         </TableContainer>
       </ThemeProvider>
-</div>
-); };
+    </div>
+  );
+};
 
 export default ListOfUsers;

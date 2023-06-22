@@ -7,7 +7,7 @@ import {
     FieldValues,
   } from "react-hook-form"
 
-export interface IRegisterCliente {
+export interface ICreateUser {
   id?: string;
   numeroDocumento: string;
   tipoDocumento: string;
@@ -19,13 +19,11 @@ export interface IRegisterCliente {
   uf: string;
 }
 
-export interface IRegisterProvider {
-    register: UseFormRegister<IRegisterCliente>;
+export interface ICreateUserProvider {
+    register: UseFormRegister<ICreateUser>;
     handleSubmit: UseFormHandleSubmit<FieldValues>;
     errors: FieldErrors<FieldValues>; 
-    createUser: (data: DeepRequired<IRegisterCliente>) => void;
-    listUsers: () => void;
-    usersList: IRegisterCliente[];
+    createUser: (data: DeepRequired<ICreateUser>) => void;
 }
 export interface IFormProps {
 children: ReactNode
