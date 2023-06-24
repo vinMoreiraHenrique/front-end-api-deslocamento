@@ -14,9 +14,11 @@ const EditUser = () => {
     const id = data.id;
     setUserId(id);
     editUserById(data);
-    console.log(userId);
-    console.log(data);
   };
+
+  // useEffect(() => {
+  //   console.log(userId);
+  // }, [userId]);
 
   return (
     <Container>
@@ -30,6 +32,9 @@ const EditUser = () => {
             label="ID"
             variant="outlined"
             {...register("id")}
+            onChange={(e) => {
+              setUserId(e.target.value);
+            }}
           />
           <TextField
             id="standard-basic"

@@ -1,7 +1,7 @@
 import { FieldValues, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
 
 export interface IEditUserProvider {
-    userId: number | null;
+    userId: string;
     editUserById: (data: any) => void;
     setUserId: any;
     register: UseFormRegister<IEditUser>;
