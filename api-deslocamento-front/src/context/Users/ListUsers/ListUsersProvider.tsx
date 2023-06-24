@@ -11,6 +11,24 @@ export const ListUsersContext = createContext<IListUserProvider>(
 const ListUsersProvider = ({ children }: IFormProps) => {
   const [usersList, setUsersList] = useState([]);
   const [userById, setUserById] = useState(null)
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [tableHeight, setTableHeight] = useState("auto");
+  const [tableType, setTableType] = useState(true);
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const listUsers = () => {
     api
@@ -25,7 +43,7 @@ const ListUsersProvider = ({ children }: IFormProps) => {
 
   const listUserById = (id: number) => {
     api
-      .get(`/Cliente/${id}`)
+      .get(`/Cliente/${62}`)
       .then((response) => {
         setUserById(response.data);
       })
@@ -40,7 +58,14 @@ const ListUsersProvider = ({ children }: IFormProps) => {
         listUsers,
         usersList,
         userById,
-        listUserById
+        listUserById,
+        page,
+        rowsPerPage,
+        tableHeight,
+        tableType,
+        handleChangePage,
+        handleChangeRowsPerPage,
+        setTableType
       }}
     >
       {children}

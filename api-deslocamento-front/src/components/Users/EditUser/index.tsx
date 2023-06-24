@@ -1,19 +1,21 @@
-"use client";
-
-import { CreateUserContext } from "@/context/Users/CreateUser/CreateUserProvider";
+import { TextField, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import { useContext } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { inputTheme } from "./theme";
-import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
+import { inputTheme } from "../CreateUser/theme";
+import { IEditUser } from "@/context/Users/EditUser/EditUser.interfaces";
+import { EditUserContext } from "@/context/Users/EditUser/EditUserProvider";
+import { useContext, useEffect } from "react";
 
-const CreateUserForm = () => {
-  const { register, handleSubmit, createUser } = useContext(CreateUserContext);
+const EditUser = () => {
+  const { register, handleSubmit, editUserById, setUserId, userId } =
+    useContext(EditUserContext);
 
-  const onSubmit: SubmitHandler<ICreateUser> = (data: any) => {
-    createUser(data);
+  const onSubmit: SubmitHandler<IEditUser> = (data: any) => {
+    const id = data.id;
+    setUserId(id);
+    editUserById(data);
+    console.log(userId);
+    console.log(data);
   };
 
   return (
@@ -25,15 +27,9 @@ const CreateUserForm = () => {
         <ThemeProvider theme={inputTheme}>
           <TextField
             id="outlined-basic"
-            label="Número do Documento"
+            label="ID"
             variant="outlined"
-            {...register("numeroDocumento")}
-          />
-          <TextField
-            id="filled-basic"
-            label="Tipo do Documento"
-            variant="filled"
-            {...register("tipoDocumento")}
+            {...register("id")}
           />
           <TextField
             id="standard-basic"
@@ -78,4 +74,4 @@ const CreateUserForm = () => {
   );
 };
 
-export default CreateUserForm;
+export default EditUser;
