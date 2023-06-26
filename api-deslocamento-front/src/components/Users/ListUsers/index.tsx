@@ -32,7 +32,6 @@ const ListOfUsers = () => {
   useEffect(() => {
     listUsers();
   });
-  // listUserById(62);
   useEffect(() => {
     const tableContainer = document.getElementById("table-container");
     if (tableContainer) {

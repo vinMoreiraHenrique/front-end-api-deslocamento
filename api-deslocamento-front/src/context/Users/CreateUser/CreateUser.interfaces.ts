@@ -8,7 +8,7 @@ import {
   } from "react-hook-form"
 
 export interface ICreateUser {
-  id?: string;
+  id?: number | undefined;
   numeroDocumento: string;
   tipoDocumento: string;
   nome: string;
