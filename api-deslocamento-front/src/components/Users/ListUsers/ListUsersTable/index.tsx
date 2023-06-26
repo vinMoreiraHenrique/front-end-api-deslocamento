@@ -8,14 +8,14 @@ import { useContext } from "react";
 const ListUsersTable = () => {
   const { usersList, page, rowsPerPage } = useContext(ListUsersContext);
 
-  const handleDelete = (id: number) => {
-    api // chama a API para deletar o usuário pelo id
+  const handleDelete = (id: number | undefined) => {
+    api
       .delete(`/Cliente/${id}`, {data: {id}})
       .then((response) => {
-        console.log(response.data); // loga a resposta da API no console
+        console.log(response.data);
       })
       .catch((error) => {
-        console.error(error); // loga o erro no console, se houver
+        console.error(error);
       });
   };
 
