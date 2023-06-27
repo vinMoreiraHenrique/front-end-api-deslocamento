@@ -1,10 +1,22 @@
 import { ICreateDriver } from "@/context/Drivers/CreateDriver/CreateDriver.interfaces";
 import { ListDriversContext } from "@/context/Drivers/ListDrivers/ListDriversProvider";
+import { api } from "@/services/api";
 import { TableCell, TableRow } from "@mui/material";
 import { useContext } from "react";
 
 const ListDriversTable = () => {
   const { driversList, page, rowsPerPage } = useContext(ListDriversContext);
+
+  const handleDelete = (id: number | undefined) => {
+    api
+      .delete(`/Condutor/${id}`, { data: { id } })
+      .then((response) => {
+        response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return driversList
     ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -22,7 +34,7 @@ const ListDriversTable = () => {
           <TableCell>{driver.numeroHabilitacao}</TableCell>
           <TableCell>{driver.catergoriaHabilitacao}</TableCell>
           <TableCell>{driver.vencimentoHabilitacao}</TableCell>
-          {/* <button onClick={() => handleDelete(driver.id)}>Delete</button> */}
+          <button onClick={() => handleDelete(driver.id)}>Delete</button>
         </TableRow>
       );
     });
