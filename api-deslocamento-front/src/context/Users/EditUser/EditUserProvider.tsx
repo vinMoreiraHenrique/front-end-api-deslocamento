@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { IEditUser, IEditUserProvider } from "./EditUser.interfaces";
 import { IFormProps } from "../CreateUser/CreateUser.interfaces";
 import { api } from "@/services/api";

@@ -65,7 +65,7 @@ const ListDriversProvider = ({ children }: IFormProps) => {
         tableType,
         handleChangePage,
         handleChangeRowsPerPage,
-        setTableType
+        setTableType,
       }}
     >
       {children}
