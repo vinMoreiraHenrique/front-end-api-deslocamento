@@ -9,6 +9,8 @@ import EditUserProvider from "@/context/Users/EditUser/EditUserProvider";
 import ListUsersProvider from "@/context/Users/ListUsers/ListUsersProvider";
 import CreateUserForm from "@/components/Users/CreateUser";
 import CreateDriverForm from "@/components/Drivers/CreateDriver";
+import EditDriverProvider from "@/context/Drivers/EditDriver/EditDriverProvider";
+import EditDriver from "@/components/Drivers/EditDriver";
 
 export default function Home() {
   return (
@@ -17,17 +19,18 @@ export default function Home() {
         <CreateUserProvider>
           <CreateDriverProvider>
             <ListDriversProvider>
-              <CreateDriverForm />
-              <ListOfDrivers />
+              <EditDriverProvider>
+                <EditDriver />
+                <CreateDriverForm />
+                <ListOfDrivers />
+              </EditDriverProvider>
             </ListDriversProvider>
           </CreateDriverProvider>
           <EditUserProvider>
             {/* <CreateUserForm /> */}
             <EditUser />
           </EditUserProvider>
-          <ListUsersProvider>
-            {/* <ListOfUsers /> */}
-          </ListUsersProvider>
+          <ListUsersProvider>{/* <ListOfUsers /> */}</ListUsersProvider>
         </CreateUserProvider>
       </div>
     </main>

@@ -4,10 +4,10 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { inputTheme } from "../../../styles/Table/TableTheme/theme";
 import { IEditUser } from "@/context/Users/EditUser/EditUser.interfaces";
 import { EditUserContext } from "@/context/Users/EditUser/EditUserProvider";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 const EditUser = () => {
-  const { register, handleSubmit, editUserById, setUserId, userId } =
+  const { register, handleSubmit, editUserById, setUserId } =
     useContext(EditUserContext);
 
   const onSubmit: SubmitHandler<IEditUser> = (data: any) => {
@@ -15,10 +15,6 @@ const EditUser = () => {
     setUserId(id);
     editUserById(data);
   };
-
-  // useEffect(() => {
-  //   console.log(userId);
-  // }, [userId]);
 
   return (
     <Container>
