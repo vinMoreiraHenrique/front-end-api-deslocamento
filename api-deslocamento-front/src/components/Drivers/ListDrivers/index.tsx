@@ -1,4 +1,5 @@
 "use client";
+import { styledTable } from "@/styles/Table/TableRow/theme";
 import {
   Table,
   TableBody,
@@ -11,39 +12,40 @@ import {
   ThemeProvider,
   Container,
 } from "@mui/material";
+import ListDriversTable from "./ListDriversTable";
 import { useContext, useEffect } from "react";
-import { styledTable } from "../../../styles/Table/TableRow/theme";
-import { ListUsersContext } from "@/context/Users/ListUsers/ListUsersProvider";
-import ListUsersTable from "./ListUsersTable";
-import ListUserByIdTable from "./ListUserByIdTable";
+import { ListDriversContext } from "@/context/Drivers/ListDrivers/ListDriversProvider";
+import ListDriverByIdTable from "./ListDriversById";
 
-const ListOfUsers = () => {
+const ListOfDrivers = () => {
   const {
-    listUsers,
-    usersList,
+    listDrivers,
+    driversList,
     tableType,
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
-  } = useContext(ListUsersContext);
+  } = useContext(ListDriversContext);
 
   useEffect(() => {
-    listUsers();
-    console.log(usersList)
+    listDrivers();
   });
+
   useEffect(() => {
     const tableContainer = document.getElementById("table-container");
     if (tableContainer) {
       const tableRows = tableContainer.querySelectorAll("tbody tr");
       const suggestedTableHeight = (tableRows.length + 1) * 50;
+      // setTableHeight(suggestedTableHeight);
     }
-  }, [usersList]);
+  }, [driversList]);
 
+  
 
   return (
     <Container>
-      <h1>Lista de Clientes</h1>
+      <h1>Lista de Condutores</h1>
       <ThemeProvider theme={styledTable}>
         <TableContainer sx={{ color: "blue" }} id="table-container">
           <Table>
@@ -51,21 +53,19 @@ const ListOfUsers = () => {
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Nome</TableCell>
-                <TableCell>Número do Documento</TableCell>
-                <TableCell>Tipo de Documento</TableCell>
-                <TableCell>Cidade</TableCell>
-                <TableCell>Bairro</TableCell>
-                <TableCell>UF</TableCell>
+                <TableCell>Número da Habilitação</TableCell>
+                <TableCell>Categoria da Habilitação</TableCell>
+                <TableCell>Vencimento da Habilitação</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {!tableType ? <ListUserByIdTable /> : <ListUsersTable />}
+              {!tableType ? <ListDriverByIdTable /> : <ListDriversTable />}
             </TableBody>
             <TableFooter>
               <TableRow>
                 <TablePagination
                   rowsPerPageOptions={[10, 25, 50]}
-                  count={usersList.length}
+                  count={driversList.length}
                   page={page}
                   rowsPerPage={rowsPerPage}
                   onPageChange={handleChangePage}
@@ -79,5 +79,4 @@ const ListOfUsers = () => {
     </Container>
   );
 };
-
-export default ListOfUsers;
+export default ListOfDrivers;

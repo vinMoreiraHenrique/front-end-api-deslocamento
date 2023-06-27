@@ -1,6 +1,6 @@
 "use client";
 
-import { inputTheme } from "@/components/Users/CreateUser/theme";
+import { inputTheme } from "@/styles/Table/TableTheme/theme";
 import { ICreateDriver } from "@/context/Drivers/CreateDriver/CreateDriver.interfaces";
 import { CreateDriverContext } from "@/context/Drivers/CreateDriver/CreateDriverProvider";
 import { Container, TextField, ThemeProvider } from "@mui/material";
@@ -24,25 +24,25 @@ const CreateDriverForm = () => {
         <ThemeProvider theme={inputTheme}>
           <TextField
             id="outlined-basic"
-            label="Número do Documento"
+            label="Nome"
             variant="outlined"
             {...register("nome")}
           />
           <TextField
             id="filled-basic"
-            label="Tipo do Documento"
+            label="Número da Habilitação"
             variant="filled"
             {...register("numeroHabilitacao")}
           />
           <TextField
             id="standard-basic"
-            label="Nome"
+            label="Categoria da Habilitação"
             variant="standard"
             {...register("categoriaHabilitacao")}
           />
           <TextField
             id="outlined-basic"
-            label="Logradouro"
+            label="Vencimento da Habilitação"
             variant="outlined"
             {...register("vencimentoHabilitacao")}
           />

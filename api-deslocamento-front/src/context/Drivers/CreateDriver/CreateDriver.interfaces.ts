@@ -7,9 +7,11 @@ import {
 } from "react-hook-form";
 
 export interface ICreateDriver {
+  id?: number;
   nome: string;
   numeroHabilitacao: string;
-  categoriaHabilitacao: string;
+  categoriaHabilitacao?: string;
+  catergoriaHabilitacao: string;
   vencimentoHabilitacao: string;
 }
 

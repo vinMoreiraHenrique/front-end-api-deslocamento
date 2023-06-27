@@ -6,7 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { inputTheme } from "./theme";
+import { inputTheme } from "../../../styles/Table/TableTheme/theme";
 import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
 
 const CreateUserForm = () => {
