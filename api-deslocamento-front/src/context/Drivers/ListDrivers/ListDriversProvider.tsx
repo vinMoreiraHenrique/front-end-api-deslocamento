@@ -1,16 +1,16 @@
 "use client";
-import { createContext, useState } from "react";
+import { IFormProps } from "@/context/Users/CreateUser/CreateUser.interfaces";
 import { api } from "@/services/api";
-import { ICreateUser, IFormProps } from "../CreateUser/CreateUser.interfaces";
-import { IListUserProvider } from "./ListUsers.interfaces";
+import { createContext, useState } from "react";
+import { IListDriverProvider } from "./ListDrivers.interfaces";
 
-export const ListUsersContext = createContext<IListUserProvider>(
-  {} as IListUserProvider
+export const ListDriversContext = createContext<IListDriverProvider>(
+  {} as IListDriverProvider
 );
 
-const ListUsersProvider = ({ children }: IFormProps) => {
-  const [usersList, setUsersList] = useState([]);
-  const [userById, setUserById] = useState(null)
+const ListDriversProvider = ({ children }: IFormProps) => {
+  const [driversList, setDriversList] = useState([]);
+  const [driverById, setDriverById] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [tableHeight, setTableHeight] = useState("auto");
@@ -30,35 +30,35 @@ const ListUsersProvider = ({ children }: IFormProps) => {
     setPage(0);
   };
 
-  const listUsers = () => {
+  const listDrivers = () => {
     api
-      .get("/Cliente")
+      .get("/Condutor")
       .then((response) => {
-        setUsersList(response.data);
+        setDriversList(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  const listUserById = (id: number) => {
+  const listDriverById = (id: number) => {
     api
-      .get(`/Cliente/${id}`)
+      .get(`/Condutor/${id}`)
       .then((response) => {
-        setUserById(response.data);
+        setDriverById(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   return (
-    <ListUsersContext.Provider
+    <ListDriversContext.Provider
       value={{
-        listUsers,
-        usersList,
-        userById,
-        listUserById,
+        listDrivers,
+        listDriverById,
+        driversList,
+        driverById,
         page,
         rowsPerPage,
         tableHeight,
@@ -69,7 +69,7 @@ const ListUsersProvider = ({ children }: IFormProps) => {
       }}
     >
       {children}
-    </ListUsersContext.Provider>
+    </ListDriversContext.Provider>
   );
 };
-export default ListUsersProvider;
+export default ListDriversProvider;

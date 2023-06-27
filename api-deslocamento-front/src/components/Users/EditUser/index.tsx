@@ -1,7 +1,7 @@
 import { TextField, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/material";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { inputTheme } from "../CreateUser/theme";
+import { inputTheme } from "../../../styles/Table/TableTheme/theme";
 import { IEditUser } from "@/context/Users/EditUser/EditUser.interfaces";
 import { EditUserContext } from "@/context/Users/EditUser/EditUserProvider";
 import { useContext, useEffect } from "react";
