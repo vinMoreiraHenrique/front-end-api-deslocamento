@@ -7,6 +7,7 @@ import EditUserProvider from "./Users/EditUser/EditUserProvider";
 import ListUsersProvider from "./Users/ListUsers/ListUsersProvider";
 import CreateVehicleProvider from "./Vehicles/CreateVehicle/CreateVehicleProvider";
 import { ListVehiclesProvider } from "./Vehicles/ListVehicles/ListVehiclesProvider";
+import EditvehicleProvider from "./Vehicles/EditVehicle/EditvehicleProvider";
 
 interface RootProviderProps {
   children: ReactNode;
@@ -21,7 +22,9 @@ const RootProvider: React.FC<RootProviderProps> = ({ children }) => {
             <EditUserProvider>
               <ListUsersProvider>
                 <CreateVehicleProvider>
+                  <EditvehicleProvider>
                   <ListVehiclesProvider>{children}</ListVehiclesProvider>
+                  </EditvehicleProvider>
                 </CreateVehicleProvider>
               </ListUsersProvider>
             </EditUserProvider>
