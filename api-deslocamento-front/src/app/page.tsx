@@ -5,6 +5,7 @@ import CreateDriverForm from "@/components/Drivers/CreateDriver";
 import EditDriver from "@/components/Drivers/EditDriver";
 import RootProvider from "@/context/RootProvider";
 import CreateVehicleForm from "@/components/Vehicles/CreateVehicle";
+import ListOfVehicles from "@/components/Vehicles/ListVehicles";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <RootProvider>
           <CreateVehicleForm />
+          <ListOfVehicles/>
           {/* <EditDriver /> */}
           {/* <CreateDriverForm /> */}
           {/* <ListOfDrivers /> */}
