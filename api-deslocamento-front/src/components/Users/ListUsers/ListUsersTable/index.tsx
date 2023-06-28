@@ -1,4 +1,3 @@
-
 import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
 import { ListUsersContext } from "@/context/Users/ListUsers/ListUsersProvider";
 import { api } from "@/services/api";
