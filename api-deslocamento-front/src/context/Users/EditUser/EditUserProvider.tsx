@@ -30,7 +30,7 @@ const EditUserProvider = ({ children }: IFormProps) => {
     api
       .put(`/Cliente/${userId}`, data)
       .then((response) => {
-        console.log(response.data);
+        response.data;
       })
       .catch((error) => {
         console.error(error);

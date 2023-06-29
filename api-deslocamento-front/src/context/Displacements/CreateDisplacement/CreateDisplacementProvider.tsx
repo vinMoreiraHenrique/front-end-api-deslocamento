@@ -19,9 +19,9 @@ const CreateDisplacementProvider = ({ children }: IFormProps) => {
 
   const createDisplacement = (data: ICreateDisplacement) => {
     api
-      .post("/Displacement", data)
+      .post("/Deslocamento/IniciarDeslocamento", data)
       .then((response) => {
-        return response;
+        console.log( response);
       })
       .catch((error) => {
         console.error(error);

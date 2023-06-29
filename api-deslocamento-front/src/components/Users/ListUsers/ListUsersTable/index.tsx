@@ -11,7 +11,7 @@ const ListUsersTable = () => {
     api
       .delete(`/Cliente/${id}`, {data: {id}})
       .then((response) => {
-        console.log(response.data);
+        response.data;
       })
       .catch((error) => {
         console.error(error);

@@ -44,15 +44,16 @@ const ListOfVehicles = () => {
     <Container>
       <h1>Lista de Veículos</h1>
       <ThemeProvider theme={styledTable}>
-        <TableContainer sx={{ color: "blue" }} id="table-container">
+        <TableContainer sx={{ color: "blue" }} id="table-container" >
           <Table>
-            <TableHead>
+            <TableHead sx={{width: "auto"}}>
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Placa</TableCell>
                 <TableCell>Marca e Modelo</TableCell>
                 <TableCell>Ano de Fabricação</TableCell>
                 <TableCell>Km Atual</TableCell>
+                {/* <TableCell></TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>

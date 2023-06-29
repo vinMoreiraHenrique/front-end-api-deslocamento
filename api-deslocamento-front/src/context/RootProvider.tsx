@@ -8,6 +8,8 @@ import ListUsersProvider from "./Users/ListUsers/ListUsersProvider";
 import CreateVehicleProvider from "./Vehicles/CreateVehicle/CreateVehicleProvider";
 import { ListVehiclesProvider } from "./Vehicles/ListVehicles/ListVehiclesProvider";
 import EditvehicleProvider from "./Vehicles/EditVehicle/EditvehicleProvider";
+import ListDisplacementsProvider from "./Displacements/ListDisplacements/ListDisplacementsProvider";
+import CreateDisplacementProvider from "./Displacements/CreateDisplacement/CreateDisplacementProvider";
 
 interface RootProviderProps {
   children: ReactNode;
@@ -23,7 +25,13 @@ const RootProvider: React.FC<RootProviderProps> = ({ children }) => {
               <ListUsersProvider>
                 <CreateVehicleProvider>
                   <EditvehicleProvider>
-                  <ListVehiclesProvider>{children}</ListVehiclesProvider>
+                    <ListVehiclesProvider>
+                      <ListDisplacementsProvider>
+                        <CreateDisplacementProvider>
+                          {children}
+                        </CreateDisplacementProvider>
+                      </ListDisplacementsProvider>
+                    </ListVehiclesProvider>
                   </EditvehicleProvider>
                 </CreateVehicleProvider>
               </ListUsersProvider>
