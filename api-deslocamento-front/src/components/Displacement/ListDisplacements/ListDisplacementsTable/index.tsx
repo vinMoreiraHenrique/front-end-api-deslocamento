@@ -46,6 +46,7 @@ const ListDisplacementsTable = () => {
           <TableCell>{displacement.idCondutor}</TableCell>
           <TableCell>{displacement.idVeiculo}</TableCell>
           <TableCell>{displacement.idCliente}</TableCell>
+          <TableCell>{displacement.kmFinal !== null? "Viagem Finalizada": "Em andamento"}</TableCell>
           <button onClick={() => handleDelete(displacement.id)}>Delete</button>
         </TableRow>
       );

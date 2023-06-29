@@ -10,6 +10,7 @@ import { ListVehiclesProvider } from "./Vehicles/ListVehicles/ListVehiclesProvid
 import EditvehicleProvider from "./Vehicles/EditVehicle/EditvehicleProvider";
 import ListDisplacementsProvider from "./Displacements/ListDisplacements/ListDisplacementsProvider";
 import CreateDisplacementProvider from "./Displacements/CreateDisplacement/CreateDisplacementProvider";
+import EditDisplacementProvider from "./Displacements/EditDisplacement/EditDisplacementProvider";
 
 interface RootProviderProps {
   children: ReactNode;
@@ -28,7 +29,9 @@ const RootProvider: React.FC<RootProviderProps> = ({ children }) => {
                     <ListVehiclesProvider>
                       <ListDisplacementsProvider>
                         <CreateDisplacementProvider>
+                          <EditDisplacementProvider>
                           {children}
+                          </ EditDisplacementProvider>
                         </CreateDisplacementProvider>
                       </ListDisplacementsProvider>
                     </ListVehiclesProvider>
