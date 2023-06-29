@@ -9,9 +9,9 @@ const ListVehiclesTable = () => {
 
   const handleDelete = (id: number | undefined) => {
     api
-      .delete(`/Veículos/${id}`, { data: { id } })
+      .delete(`/Veiculo/${id}`, { data: { id } })
       .then((response) => {
-        console.log(response.data);
+        response.data;
       })
       .catch((error) => {
         console.error(error);
@@ -34,7 +34,7 @@ const ListVehiclesTable = () => {
           <TableCell>{vehicle.marcaModelo}</TableCell>
           <TableCell>{vehicle.anoFabricacao}</TableCell>
           <TableCell>{vehicle.kmAtual}</TableCell>
-          <button onClick={() => handleDelete(vehicle.id)}>Delete</button>
+          <TableCell><button onClick={() => handleDelete(vehicle.id)}>Delete</button></TableCell>
         </TableRow>
       );
     });

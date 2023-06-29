@@ -26,11 +26,10 @@ const EditDriverProvider = ({ children }: IFormProps) => {
     api
       .put(`/Condutor/${driverId}`, data)
       .then((response) => {
-        console.log(response.data);
+        response.data;
       })
       .catch((error) => {
         console.error(error);
-        console.log(data);
       });
   };
 

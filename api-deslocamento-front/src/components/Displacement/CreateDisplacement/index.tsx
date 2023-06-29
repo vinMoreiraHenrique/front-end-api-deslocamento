@@ -1,7 +1,7 @@
 "use client";
 
-import { ICreateDisplacement } from "@/context/Displacement/CreateDisplacement/CreateDisplacement.interfaces";
-import { CreateDisplacementContext } from "@/context/Displacement/CreateDisplacement/CreateDisplacementProvider";
+import { ICreateDisplacement } from "@/context/Displacements/CreateDisplacement/CreateDisplacement.interfaces";
+import { CreateDisplacementContext } from "@/context/Displacements/CreateDisplacement/CreateDisplacementProvider";
 import { inputTheme } from "@/styles/Table/TableTheme/theme";
 import { Container, TextField, ThemeProvider } from "@mui/material";
 import { useContext } from "react";
@@ -10,7 +10,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 const CreateDisplacementForm = () => {
     const { register, handleSubmit, errors, createDisplacement } = useContext(CreateDisplacementContext);
 
-    const onSubmit: SubmitHandler<ICreateDisplacement> = (data) => {
+    const onSubmit: SubmitHandler<ICreateDisplacement> = (data: any) => {
         createDisplacement(data);
     }
   return (
@@ -25,12 +25,6 @@ const CreateDisplacementForm = () => {
             label="km inicial"
             variant="outlined"
             {...register("kmInicial")}
-          />
-          <TextField
-            id="filled-basic"
-            label="km final"
-            variant="filled"
-            {...register("kmFinal")}
           />
           <TextField
             id="filled-basic"
@@ -74,3 +68,5 @@ const CreateDisplacementForm = () => {
     </Container>
   );
 };
+
+export default CreateDisplacementForm;

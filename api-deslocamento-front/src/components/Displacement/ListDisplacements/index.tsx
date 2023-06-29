@@ -1,4 +1,5 @@
 "use client";
+import { styledTable } from "@/styles/Table/TableRow/theme";
 import {
   Table,
   TableBody,
@@ -11,62 +12,69 @@ import {
   ThemeProvider,
   Container,
 } from "@mui/material";
+import ListDisplacementsTable from "./ListDisplacementsTable";
 import { useContext, useEffect } from "react";
-import { styledTable } from "../../../styles/Table/TableRow/theme";
-import { ListUsersContext } from "@/context/Users/ListUsers/ListUsersProvider";
-import ListUsersTable from "./ListUsersTable";
-import ListUserByIdTable from "./ListUserByIdTable";
+import { ListDisplacementsContext } from "@/context/Displacements/ListDisplacements/ListDisplacementsProvider";
+import ListDisplacementByIdTable from "./ListDisplacementById";
 
-const ListOfUsers = () => {
+const ListOfDisplacements = () => {
   const {
-    listUsers,
-    usersList,
+    listDisplacements,
+    displacementsList,
     tableType,
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
-  } = useContext(ListUsersContext);
+  } = useContext(ListDisplacementsContext);
 
   useEffect(() => {
-    listUsers();
+    listDisplacements();
   });
+
   useEffect(() => {
     const tableContainer = document.getElementById("table-container");
     if (tableContainer) {
       const tableRows = tableContainer.querySelectorAll("tbody tr");
       const suggestedTableHeight = (tableRows.length + 1) * 50;
+      // setTableHeight(suggestedTableHeight);
     }
-  }, [usersList]);
-
+  });
 
   return (
     <Container>
-      <h1>Lista de Clientes</h1>
+      <h1>Lista de Deslocamentos</h1>
       <ThemeProvider theme={styledTable}>
         <TableContainer sx={{ color: "blue" }} id="table-container">
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>Nome</TableCell>
-                <TableCell>Número do Documento</TableCell>
-                <TableCell>Tipo de Documento</TableCell>
-                <TableCell>Cidade</TableCell>
-                <TableCell>Bairro</TableCell>
-                <TableCell>UF</TableCell>
+                <TableCell>Início do Deslocamento</TableCell>
+                <TableCell>KM Inicial</TableCell>
+                <TableCell>KM Final</TableCell>
+                <TableCell>Duração em KM</TableCell>
+                <TableCell>Motivo</TableCell>
+                <TableCell>Observação</TableCell>
+                <TableCell>ID do Condutor</TableCell>
+                <TableCell>ID do Veículo</TableCell>
+                <TableCell>ID do Cliente</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {!tableType ? <ListUserByIdTable /> : <ListUsersTable />}
+              {!tableType ? (
+                <ListDisplacementByIdTable />
+              ) : (
+                <ListDisplacementsTable />
+              )}
             </TableBody>
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  rowsPerPageOptions={[10, 25, 50]}
-                  count={usersList.length}
-                  page={page}
+                  rowsPerPageOptions={[10, 25, 100]}
+                  count={displacementsList.length}
                   rowsPerPage={rowsPerPage}
+                  page={page}
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
                 />
@@ -79,4 +87,4 @@ const ListOfUsers = () => {
   );
 };
 
-export default ListOfUsers;
+export default ListOfDisplacements;

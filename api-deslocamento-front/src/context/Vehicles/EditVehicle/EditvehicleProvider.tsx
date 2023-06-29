@@ -22,7 +22,7 @@ const EditvehicleProvider = ({ children }: IFormProps) => {
     api
       .put(`/Veiculo/${vehicleId}`, data)
       .then((response) => {
-        console.log(response.data);
+        response.data;
       })
       .catch((error) => {
         console.error(error);
