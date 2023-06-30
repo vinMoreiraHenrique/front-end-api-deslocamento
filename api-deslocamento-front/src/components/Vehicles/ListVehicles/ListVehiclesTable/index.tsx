@@ -34,7 +34,9 @@ const ListVehiclesTable = () => {
           <TableCell>{vehicle.marcaModelo}</TableCell>
           <TableCell>{vehicle.anoFabricacao}</TableCell>
           <TableCell>{vehicle.kmAtual}</TableCell>
-          <TableCell><button onClick={() => handleDelete(vehicle.id)}>Delete</button></TableCell>
+          <TableCell>
+            <button onClick={() => handleDelete(vehicle.id)}>Delete</button>
+          </TableCell>
         </TableRow>
       );
     });

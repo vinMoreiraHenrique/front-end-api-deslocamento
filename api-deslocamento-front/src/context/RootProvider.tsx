@@ -11,6 +11,7 @@ import EditvehicleProvider from "./Vehicles/EditVehicle/EditvehicleProvider";
 import ListDisplacementsProvider from "./Displacements/ListDisplacements/ListDisplacementsProvider";
 import CreateDisplacementProvider from "./Displacements/CreateDisplacement/CreateDisplacementProvider";
 import EditDisplacementProvider from "./Displacements/EditDisplacement/EditDisplacementProvider";
+import ListWeatherForecastProvider from "./WeatherForecast/WeatherForecastProvider";
 
 interface RootProviderProps {
   children: ReactNode;
@@ -30,8 +31,10 @@ const RootProvider: React.FC<RootProviderProps> = ({ children }) => {
                       <ListDisplacementsProvider>
                         <CreateDisplacementProvider>
                           <EditDisplacementProvider>
-                          {children}
-                          </ EditDisplacementProvider>
+                            <ListWeatherForecastProvider>
+                              {children}
+                            </ListWeatherForecastProvider>
+                          </EditDisplacementProvider>
                         </CreateDisplacementProvider>
                       </ListDisplacementsProvider>
                     </ListVehiclesProvider>

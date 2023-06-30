@@ -1,7 +1,8 @@
+import { inter } from "@/app/layout";
 import { createTheme } from "@mui/material";
 
-export const inputTheme = createTheme({
-  
+
+export const inputTheme = createTheme({  
     components: {
       MuiFilledInput: {
         styleOverrides: {
