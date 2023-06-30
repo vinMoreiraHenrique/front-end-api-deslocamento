@@ -3,6 +3,7 @@ import { ListDriversContext } from "@/context/Drivers/ListDrivers/ListDriversPro
 import { api } from "@/services/api";
 import { TableCell, TableRow } from "@mui/material";
 import { useContext } from "react";
+import { FaTrashAlt } from "react-icons/Fa";
 
 const ListDriversTable = () => {
   const { driversList, page, rowsPerPage } = useContext(ListDriversContext);
@@ -23,7 +24,12 @@ const ListDriversTable = () => {
     ?.map((driver: ICreateDriver, index: number) => {
       return (
         <TableRow
-          sx={{ backgroundColor: "white", color: "blue" }}
+          sx={{
+            ":hover": {
+              backgroundColor: "#707070", // Change the background color to red on hover
+              color: "white", // Change the text color to white on hover
+            },
+          }}
           className={
             driversList?.length !== 0 ? "animate-fade-in-to-right" : ""
           }
@@ -34,7 +40,11 @@ const ListDriversTable = () => {
           <TableCell>{driver.numeroHabilitacao}</TableCell>
           <TableCell>{driver.catergoriaHabilitacao}</TableCell>
           <TableCell>{driver.vencimentoHabilitacao}</TableCell>
-          <button onClick={() => handleDelete(driver.id)}>Delete</button>
+          <TableCell>
+            <button onClick={() => handleDelete(driver.id)}>
+              <FaTrashAlt className="hover:text-red-500" />
+            </button>
+          </TableCell>
         </TableRow>
       );
     });

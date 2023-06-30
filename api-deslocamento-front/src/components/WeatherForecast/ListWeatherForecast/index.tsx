@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { styledTable } from "../../../styles/Table/TableRow/theme";
+import { styledTable } from "../../../styles/Table/StyledTable/theme";
 import { ListWeatherForecastContext } from "@/context/WeatherForecast/WeatherForecastProvider";
 import ListWeatherForecastTable from "./ListWeatherForecastTable";
 
@@ -43,7 +43,7 @@ const ListOfWeatherForecast = () => {
     <Container>
       <h1>Lista de Previsão de Temperatura</h1>
       <ThemeProvider theme={styledTable}>
-        <TableContainer sx={{ color: "blue" }} id="table-container">
+        <TableContainer id="table-container">
           <Table>
             <TableHead sx={{ width: "auto" }}>
               <TableRow>

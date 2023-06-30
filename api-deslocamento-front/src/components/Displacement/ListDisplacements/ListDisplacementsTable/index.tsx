@@ -3,6 +3,7 @@ import { ListDisplacementsContext } from "@/context/Displacements/ListDisplaceme
 import { api } from "@/services/api";
 import { TableCell, TableRow } from "@mui/material";
 import { useContext } from "react";
+import { FaTrashAlt } from "react-icons/Fa";
 
 export const handleDelete = (id: number | undefined) => {
   api
@@ -18,15 +19,19 @@ const ListDisplacementsTable = () => {
   const { displacementsList, page, rowsPerPage } = useContext(
     ListDisplacementsContext
   );
-  
 
   return displacementsList
     ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
     .map((displacement: IListDisplacement, index: number) => {
-        const difference = displacement?.kmFinal - displacement?.kmInicial;
+      const difference = displacement?.kmFinal - displacement?.kmInicial;
       return (
         <TableRow
-          sx={{ backgroundColor: "white", color: "blue" }}
+          sx={{
+            ":hover": {
+              backgroundColor: "#707070", 
+              color: "white",
+            },
+          }}
           className={
             displacementsList?.length !== 0 ? "animate-fade-in-to-right" : ""
           }
@@ -40,14 +45,22 @@ const ListDisplacementsTable = () => {
               ? displacement.kmFinal
               : "Em andamento"}
           </TableCell>
-          <TableCell>{displacement.kmFinal && displacement.kmInicial !== null ? difference : "-"}</TableCell>
+          <TableCell>
+            {displacement.kmFinal && displacement.kmInicial !== null
+              ? difference
+              : "-"}
+          </TableCell>
           <TableCell>{displacement.motivo}</TableCell>
           <TableCell>{displacement.observacao}</TableCell>
           <TableCell>{displacement.idCondutor}</TableCell>
           <TableCell>{displacement.idVeiculo}</TableCell>
           <TableCell>{displacement.idCliente}</TableCell>
-          <TableCell>{displacement.kmFinal !== null? "Viagem Finalizada": "Em andamento"}</TableCell>
-          <button onClick={() => handleDelete(displacement.id)}>Delete</button>
+          <TableCell>
+            {displacement.kmFinal !== null
+              ? "Viagem Finalizada"
+              : "Em andamento"}
+          </TableCell>
+          <TableCell><button onClick={() => handleDelete(displacement.id)}><FaTrashAlt /></button></TableCell>
         </TableRow>
       );
     });

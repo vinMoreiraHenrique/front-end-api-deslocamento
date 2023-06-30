@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { styledTable } from "../../../styles/Table/TableRow/theme";
+import { styledTable } from "../../../styles/Table/StyledTable/theme";
 import { ListUsersContext } from "@/context/Users/ListUsers/ListUsersProvider";
 import ListUsersTable from "./ListUsersTable";
 import ListUserByIdTable from "./ListUserByIdTable";
@@ -44,7 +44,7 @@ const ListOfUsers = () => {
     <Container>
       <h1>Lista de Clientes</h1>
       <ThemeProvider theme={styledTable}>
-        <TableContainer sx={{ color: "blue" }} id="table-container">
+        <TableContainer id="table-container">
           <Table>
             <TableHead>
               <TableRow>
@@ -55,6 +55,7 @@ const ListOfUsers = () => {
                 <TableCell>Cidade</TableCell>
                 <TableCell>Bairro</TableCell>
                 <TableCell>UF</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

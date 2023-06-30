@@ -1,5 +1,5 @@
 "use client";
-import { styledTable } from "@/styles/Table/TableRow/theme";
+import { styledTable } from "@/styles/Table/StyledTable/theme";
 import {
   Table,
   TableBody,
@@ -45,7 +45,7 @@ const ListOfDisplacements = () => {
     <Container>
       <h1>Lista de Deslocamentos</h1>
       <ThemeProvider theme={styledTable}>
-        <TableContainer sx={{ color: "blue" }} id="table-container">
+        <TableContainer id="table-container">
           <Table>
             <TableHead>
               <TableRow>
@@ -59,6 +59,7 @@ const ListOfDisplacements = () => {
                 <TableCell>ID do Condutor</TableCell>
                 <TableCell>ID do Veículo</TableCell>
                 <TableCell>ID do Cliente</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
