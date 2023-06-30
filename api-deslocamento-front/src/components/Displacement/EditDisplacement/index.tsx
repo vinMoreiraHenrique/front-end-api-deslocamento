@@ -1,7 +1,8 @@
+import FlexForm from "@/components/FlexForm";
 import { IEditDisplacement } from "@/context/Displacements/EditDisplacement/EditDisplacement.interfaces";
 import { EditDisplacementContext } from "@/context/Displacements/EditDisplacement/EditDisplacementProvider";
-import { inputTheme } from "@/styles/Table/TableTheme/theme";
-import { Container, TextField, ThemeProvider } from "@mui/material";
+import { inputTheme } from "@/styles/Table/InputTheme/theme";
+import { Container, TextField, ThemeProvider, Typography } from "@mui/material";
 import { useContext } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
@@ -16,40 +17,40 @@ const EditDisplacement = () => {
   };
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}>
-        <ThemeProvider theme={inputTheme}>
+    <FlexForm>
+      <ThemeProvider theme={inputTheme}>
+        <Typography variant="h1">Finalizar Deslocamento</Typography>
+        <form
+          onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
+          className="md:flex flex-col gap-2 md:flex-col h-fit flex-nowrap"
+        >
           <TextField
-            id="outlined-basic"
             label="ID"
-            variant="outlined"
+            variant="filled"
             {...register("id")}
             onChange={(e) => {
               setDisplacementId(e.target.value);
             }}
           />
           <TextField
-            id="outlined-basic"
             label="KM Final"
-            variant="outlined"
+            variant="filled"
             {...register("kmFinal")}
           />
           <TextField
-          id="outlined-basic"
-          label="Fim Deslocamento"
-          variant="outlined"
-          {...register("fimDeslocamento")}
+            label="Fim Deslocamento"
+            variant="filled"
+            {...register("fimDeslocamento")}
           />
-        <TextField
-          id="outlined-basic"
-          label="Observação"
-          variant="outlined"
-          {...register("observacao")}
-        />
-        </ThemeProvider>
-        <button type="submit">Submeter</button>
-      </form>
-    </Container>
+          <TextField
+            label="Observação"
+            variant="filled"
+            {...register("observacao")}
+          />
+          <button type="submit" className="text-white border-2 border-black bg-[#2D2E2E] border-r-8 p-2 rounded-xl shadow-none border-none">Submeter</button>
+        </form>
+      </ThemeProvider>
+    </FlexForm>
   );
 };
 

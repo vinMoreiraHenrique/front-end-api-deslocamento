@@ -3,6 +3,7 @@ import { ListVehiclesContext } from "@/context/Vehicles/ListVehicles/ListVehicle
 import { api } from "@/services/api";
 import { TableCell, TableRow } from "@mui/material";
 import { useContext } from "react";
+import { FaTrashAlt } from "react-icons/Fa"
 
 const ListVehiclesTable = () => {
   const { vehiclesList, page, rowsPerPage } = useContext(ListVehiclesContext);
@@ -23,7 +24,12 @@ const ListVehiclesTable = () => {
     ?.map((vehicle: ICreateVehicle, index: number) => {
       return (
         <TableRow
-          sx={{ backgroundColor: "white", color: "blue" }}
+          sx={{
+            ":hover": {
+              backgroundColor: "#707070", // Change the background color to red on hover
+              color: "white", // Change the text color to white on hover
+            },
+          }}
           className={
             vehiclesList?.length !== 0 ? "animate-fade-in-to-right" : ""
           }
@@ -35,7 +41,7 @@ const ListVehiclesTable = () => {
           <TableCell>{vehicle.anoFabricacao}</TableCell>
           <TableCell>{vehicle.kmAtual}</TableCell>
           <TableCell>
-            <button onClick={() => handleDelete(vehicle.id)}>Delete</button>
+            <button onClick={() => handleDelete(vehicle.id)}><FaTrashAlt className="hover:text-red-500"/></button>
           </TableCell>
         </TableRow>
       );

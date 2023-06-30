@@ -1,9 +1,10 @@
 "use client";
 
+import FlexForm from "@/components/FlexForm";
 import { ICreateDisplacement } from "@/context/Displacements/CreateDisplacement/CreateDisplacement.interfaces";
 import { CreateDisplacementContext } from "@/context/Displacements/CreateDisplacement/CreateDisplacementProvider";
-import { inputTheme } from "@/styles/Table/TableTheme/theme";
-import { Container, TextField, ThemeProvider } from "@mui/material";
+import { inputTheme } from "@/styles/Table/InputTheme/theme";
+import { Container, TextField, ThemeProvider, Typography } from "@mui/material";
 import { useContext } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
@@ -14,58 +15,94 @@ const CreateDisplacementForm = () => {
         createDisplacement(data);
     }
   return (
-    <Container>
+    <FlexForm>
+      <ThemeProvider theme={inputTheme}>
+        <Typography variant="h1">Criar Deslocamento</Typography>
       <form
         action="#"
         onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
+        className="md:flex flex-col gap-2 md:flex-col h-fit flex-nowrap"
       >
-        <ThemeProvider theme={inputTheme}>
           <TextField
-            id="outlined-basic"
             label="km inicial"
-            variant="outlined"
+            variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("kmInicial")}
           />
           <TextField
             id="filled-basic"
             label="Início do Deslocamento"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("inicioDeslocamento")}
           />
           <TextField
             id="filled-basic"
             label="Motivo"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("motivo")}
           />
           <TextField
             id="filled-basic"
             label="Observação"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("observacao")}
           />
           <TextField
             id="filled-basic"
             label="ID do Condutor"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("idCondutor")}
           />
           <TextField
             id="filled-basic"
             label="ID do Veículo"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("idVeiculo")}
           />
           <TextField
             id="filled-basic"
             label="ID do Cliente"
             variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+              }}
+            }
             {...register("idCliente")}
           />
-        </ThemeProvider>
-        <button type="submit">Submeter</button>
+        <button type="submit" className="text-white border-2 border-black bg-[#2D2E2E] border-r-8 p-2 rounded-xl shadow-none border-none">Submeter</button>
       </form>
-    </Container>
+        </ThemeProvider>
+    </FlexForm>
   );
 };
 

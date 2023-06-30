@@ -1,19 +1,19 @@
 "use client";
-import CreateUserForm from "@/components/Users/CreateUser";
-import EditUser from "@/components/Users/EditUser";
-import ListOfUsers from "@/components/Users/ListUsers";
+import CreateDisplacementForm from "@/components/Displacement/CreateDisplacement";
+import EditDisplacement from "@/components/Displacement/EditDisplacement";
+import ListOfDisplacements from "@/components/Displacement/ListDisplacements";
 import RootProvider from "@/context/RootProvider";
 import { inputTheme } from "@/styles/Table/InputTheme/theme";
 import { Box, Button, ButtonGroup, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 
-const UserPage = () => {
-  const [formStatus, setFormStatus] = useState("createUser");
+const DisplacementPage = () => {
+  const [formStatus, setFormStatus] = useState("createDisplacement");
   return (
     <main className="flex min-h-screen flex-col items-center pl-5 pr-5 pt-5 vw-full sm:w-screen">
       <div className="z-10 w-full max-w-full items-center justify-between text-sm flex flex-col md:flex-row">
         <RootProvider>
-          <ThemeProvider theme={inputTheme}>
+        <ThemeProvider theme={inputTheme}>
             <Box className="">
               <ButtonGroup
                 variant="contained"
@@ -37,15 +37,15 @@ const UserPage = () => {
                       color: "white",
                     },
                   }}
-                  onClick={() => setFormStatus("createUser")}
+                  onClick={() => setFormStatus("createDisplacement")}
                 >
-                  Criar Usuário
+                  Criar Deslocamento
                 </Button>
               </ButtonGroup>
-              {formStatus === "createUser" && <CreateUserForm />}
-              {formStatus === "editById" && <EditUser />}
+              {formStatus === "createDisplacement" && <CreateDisplacementForm />}
+              {formStatus === "editById" && <EditDisplacement />}
             </Box>
-            <ListOfUsers />
+            <ListOfDisplacements />
           </ThemeProvider>
         </RootProvider>
       </div>
@@ -53,4 +53,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default DisplacementPage;

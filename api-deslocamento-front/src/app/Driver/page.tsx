@@ -1,19 +1,20 @@
-"use client";
-import CreateUserForm from "@/components/Users/CreateUser";
-import EditUser from "@/components/Users/EditUser";
-import ListOfUsers from "@/components/Users/ListUsers";
-import RootProvider from "@/context/RootProvider";
-import { inputTheme } from "@/styles/Table/InputTheme/theme";
-import { Box, Button, ButtonGroup, ThemeProvider } from "@mui/material";
-import { useState } from "react";
+"use client"
+import CreateDriverForm from "@/components/Drivers/CreateDriver"
+import EditDriver from "@/components/Drivers/EditDriver"
+import ListOfDrivers from "@/components/Drivers/ListDrivers"
+import RootProvider from "@/context/RootProvider"
+import { inputTheme } from "@/styles/Table/InputTheme/theme"
+import { ThemeProvider } from "@emotion/react"
+import { Box, Button, ButtonGroup } from "@mui/material"
+import { useState } from "react"
 
-const UserPage = () => {
-  const [formStatus, setFormStatus] = useState("createUser");
-  return (
-    <main className="flex min-h-screen flex-col items-center pl-5 pr-5 pt-5 vw-full sm:w-screen">
+const DriverPage = () => {
+  const [formStatus, setFormStatus] = useState("createDriver");
+    return(
+      <main className="flex min-h-screen flex-col items-center pl-5 pr-5 pt-5 vw-full sm:w-screen">
       <div className="z-10 w-full max-w-full items-center justify-between text-sm flex flex-col md:flex-row">
         <RootProvider>
-          <ThemeProvider theme={inputTheme}>
+        <ThemeProvider theme={inputTheme}>
             <Box className="">
               <ButtonGroup
                 variant="contained"
@@ -37,20 +38,20 @@ const UserPage = () => {
                       color: "white",
                     },
                   }}
-                  onClick={() => setFormStatus("createUser")}
+                  onClick={() => setFormStatus("createDriver")}
                 >
-                  Criar Usuário
+                  Criar Condutor
                 </Button>
               </ButtonGroup>
-              {formStatus === "createUser" && <CreateUserForm />}
-              {formStatus === "editById" && <EditUser />}
+              {formStatus === "createDriver" && <CreateDriverForm />}
+              {formStatus === "editById" && <EditDriver />}
             </Box>
-            <ListOfUsers />
+            <ListOfDrivers />
           </ThemeProvider>
         </RootProvider>
       </div>
     </main>
-  );
-};
+    )
+}
 
-export default UserPage;
+export default DriverPage;

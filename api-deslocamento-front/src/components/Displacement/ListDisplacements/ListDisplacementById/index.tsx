@@ -3,6 +3,7 @@ import { ListDisplacementsContext } from "@/context/Displacements/ListDisplaceme
 import { TableCell, TableRow } from "@mui/material";
 import { useContext } from "react";
 import { handleDelete } from "../ListDisplacementsTable";
+import { FaTrashAlt } from "react-icons/Fa"
 
 const ListDisplacementByIdTable = () => {
     const { displacementById } = useContext(ListDisplacementsContext);
@@ -22,7 +23,7 @@ const ListDisplacementByIdTable = () => {
             <TableCell>{displacementById?.idCondutor}</TableCell>
             <TableCell>{displacementById?.idVeiculo}</TableCell>
             <TableCell>{displacementById?.idCliente}</TableCell>
-            <button onClick={()=> handleDelete(displacementById?.id)}>Delete</button>
+            <TableCell><button onClick={()=> handleDelete(displacementById?.id)}><FaTrashAlt /></button></TableCell>
         </TableRow>
     );
 }

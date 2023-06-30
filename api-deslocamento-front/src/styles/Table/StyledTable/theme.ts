@@ -4,6 +4,9 @@ import { createTheme } from "@mui/material";
 export const styledTable = createTheme({
   typography: {
     fontFamily: inter.style.fontFamily,
+    h1: {
+      fontSize: "20rem",
+    }
   },
   components: {
     MuiTable: {
@@ -57,7 +60,6 @@ export const styledTable = createTheme({
         },
         actions: {
           color: "blue",
-          backgroundColor: "orange",
         },
         selectLabel: {
           color: "white",

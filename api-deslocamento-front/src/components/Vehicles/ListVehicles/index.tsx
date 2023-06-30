@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { styledTable } from "../../../styles/Table/TableRow/theme";
+import { styledTable } from "../../../styles/Table/StyledTable/theme";
 import { ListVehiclesContext } from "@/context/Vehicles/ListVehicles/ListVehiclesProvider";
 import ListVehicleByIdTable from "./ListVehicleById";
 import ListVehiclesTable from "./ListVehiclesTable";
@@ -44,7 +44,7 @@ const ListOfVehicles = () => {
     <Container>
       <h1>Lista de Veículos</h1>
       <ThemeProvider theme={styledTable}>
-        <TableContainer sx={{ color: "blue" }} id="table-container" >
+        <TableContainer id="table-container" >
           <Table>
             <TableHead sx={{width: "auto"}}>
               <TableRow>
@@ -53,7 +53,7 @@ const ListOfVehicles = () => {
                 <TableCell>Marca e Modelo</TableCell>
                 <TableCell>Ano de Fabricação</TableCell>
                 <TableCell>Km Atual</TableCell>
-                {/* <TableCell></TableCell> */}
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

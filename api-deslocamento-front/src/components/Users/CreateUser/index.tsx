@@ -1,13 +1,16 @@
 "use client";
 
 import { CreateUserContext } from "@/context/Users/CreateUser/CreateUserProvider";
-import { Container } from "@mui/material";
+import { Button, ButtonGroup, Container, Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { inputTheme } from "../../../styles/Table/TableTheme/theme";
+import { inputTheme } from "../../../styles/Table/InputTheme/theme";
 import { ICreateUser } from "@/context/Users/CreateUser/CreateUser.interfaces";
+import FlexForm from "@/components/FlexForm";
+import { blue } from "@mui/material/colors";
+import { inter } from "@/app/layout";
 
 const CreateUserForm = () => {
   const { register, handleSubmit, createUser } = useContext(CreateUserContext);
@@ -17,64 +20,53 @@ const CreateUserForm = () => {
   };
 
   return (
-    <Container>
-      <form
-        action="#"
-        onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
-      >
-        <ThemeProvider theme={inputTheme}>
+    <FlexForm>
+      <ThemeProvider theme={inputTheme}>
+        <Typography variant="h1" className={inter.style.fontFamily}>
+          Create User
+        </Typography>
+        <form
+          action="#"
+          onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
+          className="md:flex flex-col gap-2 md:flex-col h-fit flex-nowrap"
+        >
           <TextField
-            id="outlined-basic"
             label="Número do Documento"
-            variant="outlined"
+            variant="filled"
+            sx={{
+              "& .MuiInputLabel-filled": {
+                color: "white",
+                "&.Mui-focused": {
+                  color: "grey",
+                },
+              },
+            }}
             {...register("numeroDocumento")}
           />
           <TextField
-            id="filled-basic"
             label="Tipo do Documento"
             variant="filled"
             {...register("tipoDocumento")}
           />
+          <TextField label="Nome" variant="filled" {...register("nome")} />
           <TextField
-            id="standard-basic"
-            label="Nome"
-            variant="standard"
-            {...register("nome")}
-          />
-          <TextField
-            id="outlined-basic"
             label="Logradouro"
-            variant="outlined"
+            variant="filled"
             {...register("logradouro")}
           />
-          <TextField
-            id="outlined-basic"
-            label="Número"
-            variant="outlined"
-            {...register("numero")}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Bairro"
-            variant="outlined"
-            {...register("bairro")}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Cidade"
-            variant="outlined"
-            {...register("cidade")}
-          />
-          <TextField
-            id="outlined-basic"
-            label="UF"
-            variant="outlined"
-            {...register("uf")}
-          />
-        </ThemeProvider>
-        <button type="submit">Submeter</button>
-      </form>
-    </Container>
+          <TextField label="Número" variant="filled" {...register("numero")} />
+          <TextField label="Bairro" variant="filled" {...register("bairro")} />
+          <TextField label="Cidade" variant="filled" {...register("cidade")} />
+          <TextField label="UF" variant="filled" {...register("uf")} />
+          <button
+            type="submit"
+            className="text-white border-2 border-black bg-[#2D2E2E] border-r-8 p-2 rounded-xl shadow-none border-none"
+          >
+            Submeter
+          </button>
+        </form>
+      </ThemeProvider>
+    </FlexForm>
   );
 };
 
